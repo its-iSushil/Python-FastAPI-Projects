@@ -1,7 +1,7 @@
-from pydantic import BaseModel, Field
-from typing import EmailStr
+from pydantic import BaseModel, Field, EmailStr
+from datetime import date
 
-class Student(BaseModel):
+class StudentCreate(BaseModel):
     """Student BaseModel to create a student
 
     Args:
@@ -10,8 +10,8 @@ class Student(BaseModel):
     first_name: str = Field(description="Enter first name of student")
     last_name: str = Field(description="Enter last name of student")
     city: str = Field(description="Enter your city name")
-    email: str = Field(description="Enter your email address")
+    email: EmailStr = Field(description="Enter your email address")
     phone: int = Field(description="Enter your phone number", ge=0, le= 10)
-    dob: str = Field(description="Enter your date of birth")
+    dob: date = Field(description="Enter your date of birth")
 
 

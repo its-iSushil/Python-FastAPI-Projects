@@ -1,4 +1,4 @@
-from sqlalchemy import Column, String, Integer, DateTime
+from sqlalchemy import Column, String, Integer, DateTime, func
 
 class Student(Base):
     
@@ -11,6 +11,8 @@ class Student(Base):
     email = Column(String(225), Unique=True, nullable=False)
     phone = Column(Integer, Unique=True, nullable=False)
     dob = Column(DateTime, nullable=False)
+    created_at = Column(DateTime, server_default=func.now())
+    updated_at = Column(DateTime, server_default=func.now(), server_onupdate=func.now())
     
     
     
